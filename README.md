@@ -19,27 +19,6 @@ Before using **make sure that you have installed _com_epkalenteri_ component**. 
 ### Available parameters
   You can use all parameters that linkedevents eventList method accepts. Current parameters are:
 
-  # epkalenteri_shortcode_joomla
-
-# Requirements
-Before using **make sure that you have installed _com_epkalenteri_ component**. You can find that from [here](https://github.com/Metatavu/com_epkalenteri)
-
-# Installation
-  1. Download latest version of the plugin from [here](https://github.com/Metatavu/epkalenteri_shortcode_joomla/releases)
-  2. In Joomla! administrator page go find "Install Extensions" link and click it
-  3. Select "Install" tab
-  4. Drag and drop the downloaded zip file to the installation area. Or click browse for file and find and select the zip file
-  5. Change to "Manage" tab and find the shortcode plugin. Click enable extension.
-
-# Usage
-  You can insert list of events to article by using shortcode [**epkalenteri**].
-
-## Parameters
-  You can pass parameters to the shortcode like this: [epkalenteri pageSize="5" sort="start_time"]
-
-### Available parameters
-  You can use all parameters that linkedevents eventList method accepts. Current parameters are:
-
   - **include** Embed given reference-type fields directly into the response, otherwise they are returned as URI references. (optional)
   - **Search** (case insensitive) through all multilingual text fields (name, description, short_description, info_url) of an event (every language). Multilingual fields contain the text that users are expected to care about, thus multilinguality is useful discriminator. (optional)
   - **lastModifiedSince** Search for events that have been modified since or at this time. (optional)
