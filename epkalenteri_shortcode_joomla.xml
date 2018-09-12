@@ -12,7 +12,6 @@
         <files>
             <filename plugin="epkalenteri_shortcode_joomla">epkalenteri_shortcode_joomla.php</filename>
             <filename>linkedevents-controller.php</filename>
-            <filename>index.html</filename>
         </files>
         <config>
 
