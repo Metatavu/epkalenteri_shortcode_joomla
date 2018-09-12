@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <extension version="3.8" type="plugin" group="content">
+        <name>EP Kalenteri shortcode</name>
+        <author>Joomla! Project</author>
+        <creationDate>November 2005</creationDate>
+        <copyright>Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.</copyright>
+        <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+        <authorEmail>admin@joomla.org</authorEmail>
+        <authorUrl>www.joomla.org</authorUrl>
+        <version>3.1.0</version>
+        <description>Shortcode support for EP Kalenteri</description>
+        <files>
+            <filename plugin="epkalenteri_shortcode_joomla">epkalenteri_shortcode_joomla.php</filename>
+            <filename>linkedevents-controller.php</filename>
+            <filename>index.html</filename>
+        </files>
+        <config>
+
+        </config>
+    </extension>
