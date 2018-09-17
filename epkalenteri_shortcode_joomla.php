@@ -1,6 +1,9 @@
 <?php 
     defined('_JEXEC') or die;
     require_once(__DIR__ . '/linkedevents-controller.php');
+    $document = JFactory::getDocument();
+    $stylesheetUrl = JUri::base() . 'plugins/content/epkalenteri_shortcode_joomla/css/styles.css'; 
+    $document->addStyleSheet($stylesheetUrl);
 
     class plgContentEpkalenteri_shortcode_joomla extends JPlugin {
         protected $autoloadLanguage = true;
@@ -29,14 +32,15 @@
         }
 
         private function buildHtml ($events) {
-            $html = '<ul class="epkalenteri-events-list">';
+            require_once(__DIR__.'/templates/event.php');
+            $eventTemplate = new EventTemplate();
+            $html = '<div class="epkalenteri-events-list">';
 
             foreach ($events['data'] as $event) {
-                $html = $html . '<li class="epkalenteri-events-list-item">';
-                $html = $html . sprintf('<a href="%s" target="_blank"> %s </a> </li>', $event['infoUrl']['fi'], $event['name']['fi']);
+                $html = $html . $eventTemplate->getEventHtml($event);
             }
 
-            $html = $html . '</ul>';
+            $html = $html . '</div>';
             return $html;
         }
     }
