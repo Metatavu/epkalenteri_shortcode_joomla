@@ -1,0 +1,32 @@
+.epkalenteri-events-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.epkalenteri-event {
+  width: 220px;
+  height: 220px;
+  margin: 5px 5px;
+  display: block;
+  float: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.epkalenteri-event-start-time {
+  width: 100%;
+  color: #fff;
+}
+
+.epkalenteri-event-header {
+  color: #fff;
+  width: 100%;
+}
+
+.epkalenteri-event-short-description {
+  width: 100%;
+  color: #fff;
+}
