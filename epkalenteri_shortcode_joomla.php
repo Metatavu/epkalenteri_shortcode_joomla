@@ -11,14 +11,14 @@
         public function onContentPrepare($context, &$article, &$params, $limitstart) {
             $shortCodeParameters = self::processShortcode($article->text);
             $linkedEventsController = new LinkedeventsController();
-            $events = $linkedEventsController::getEvents($shortCodeParameters);
+            $events = $linkedEventsController->getEvents($shortCodeParameters);
             $html = self::buildHtml($events);
-
+            
             $article->text = preg_replace('/\[epkalenteri(.*?)\]/', $html, $article->text);
             return true;
         }
 
-        private function processShortcode ($content) {
+        private static function processShortcode ($content) {
             $regex = '/(\w+)\s*=\s*"(.*?)"/';
             $pattern = '/\[epkalenteri(.*?)\]/';
             preg_match_all($regex, $content, $matches);
@@ -31,7 +31,7 @@
             return $shortcodeAttrs;
         }
 
-        private function buildHtml ($events) {
+        private static function buildHtml ($events) {
             require_once(__DIR__.'/templates/event.php');
             $eventTemplate = new EventTemplate();
             $html = '<div class="epkalenteri-events-list">';

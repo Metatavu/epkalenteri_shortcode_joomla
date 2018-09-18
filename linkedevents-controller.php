@@ -38,11 +38,11 @@
         $publicationStatus = self::parameterExists($params, 'publicationStatus') ? $params['publicationStatus'] : null; 
         
         $events = $eventApi->eventList($include, $text, $lastModifiedSince, $start, $end, $bbox, $dataSource, $location, $showAll, $division, $keyword, $recurring, $minDuration, $maxDuration, $publisher, $sort, $page, $pageSize, $addressLocalityFi, $addressLocalitySv, $addressLocalityEn, $publicationStatus);
-        
+  
         return $events;
       }
 
-      private function parameterExists ($params, $parameter) {
+      private static function parameterExists ($params, $parameter) {
         if (array_key_exists($parameter, $params)) {
           return true;
         }
@@ -64,7 +64,7 @@
        * 
        * @return \Metatavu\LinkedEvents\ApiClient api client
        */
-      private function getClient() {
+      private static function getClient() {
         return new \Metatavu\LinkedEvents\ApiClient(self::getConfiguration());
       }
 
@@ -73,8 +73,9 @@
        * 
        * @return \Metatavu\LinkedEvents\Configuration configuration
        */
-      private function getConfiguration() {
-        $result = \Metatavu\LinkedEvents\Configuration::getDefaultConfiguration();
+      private static function getConfiguration() {
+        $configuration = new \Metatavu\LinkedEvents\Configuration();
+        $result = $configuration->getDefaultConfiguration();
         $result->setHost(self::getApiUrl());
         return $result;
       }
@@ -84,7 +85,7 @@
        * 
        * @return String apiurl
        */
-      private function getApiUrl () {
+      private static function getApiUrl () {
         $linkedeventsSettings = self::getLinkedeventsSettings();
         return $linkedeventsSettings[0]->apiurl;
       }
@@ -94,7 +95,7 @@
        * 
        * @return String datasource
        */
-      private function getDatasource () {
+      private static function getDatasource () {
         $linkedeventsSettings = self::getLinkedeventsSettings();
         return $linkedeventsSettings[0]->datasource;
       }
@@ -104,7 +105,7 @@
        * 
        * @return String organization
        */
-      private function getOrganization () {
+      private static function getOrganization () {
         $linkedeventsSettings = self::getLinkedeventsSettings();
         return $linkedeventsSettings[0]->organization;
       }
@@ -114,7 +115,7 @@
        * 
        * @return String apikey
        */
-      private function getApiKey () {
+      private static function getApiKey () {
         $linkedeventsSettings = self::getLinkedeventsSettings();
         return $linkedeventsSettings[0]->apikey;
       }
@@ -124,7 +125,7 @@
        * 
        * @return Array settings
        */
-      private function getLinkedeventsSettings () {
+      private static function getLinkedeventsSettings () {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true)
           ->select('*')

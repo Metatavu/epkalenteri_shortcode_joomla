@@ -2,12 +2,12 @@
   class EventTemplate {
     public function getEventHtml($event) {
       require_once(__DIR__.'/../vendor/autoload.php');
-
+      
       $eventTemplate = ['eventTemplate' => self::getEventTemplate()];
       $loader = new \Twig_Loader_Array($eventTemplate);
       $twig = new Twig_Environment($loader);
-      $eventHtml = $twig->render('eventTemplate', ['event' => $event]);
-
+      
+      $eventHtml = $twig->render('eventTemplate', array('event' => $event));
       return $eventHtml;
     }
 
