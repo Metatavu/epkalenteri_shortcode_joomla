@@ -11,12 +11,9 @@
         <description>Shortcode support for EP Kalenteri</description>
         <files>
             <filename plugin="epkalenteri_shortcode_joomla">epkalenteri_shortcode_joomla.php</filename>
-            <filename>linkedevents-controller.php</filename>
-            <folder>vendor</folder>
-            <folder>linkedevents-client-php</folder>
             <folder>css</folder>
-            <filename>templates/bootstrap.php</filename>
-            <filename>templates/event.php</filename>
+            <folder>img</folder>
+            <folder>js</folder>
         </files>
         <config>
 

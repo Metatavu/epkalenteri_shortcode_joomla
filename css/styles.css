@@ -30,3 +30,8 @@
   width: 100%;
   color: #fff;
 }
+
+.events-loading {
+  margin: auto; 
+  display: block;
+}

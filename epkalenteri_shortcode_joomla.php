@@ -1,20 +1,22 @@
 <?php 
     defined('_JEXEC') or die;
-    require_once(__DIR__ . '/linkedevents-controller.php');
     $document = JFactory::getDocument();
     $stylesheetUrl = JUri::base() . 'plugins/content/epkalenteri_shortcode_joomla/css/styles.css'; 
+    $scriptUrl = JUri::base() . 'plugins/content/epkalenteri_shortcode_joomla/js/events.js'; 
     $document->addStyleSheet($stylesheetUrl);
+    $document->addScript($scriptUrl, $type = "text/javascript", $defer = true, $async = false);
 
     class plgContentEpkalenteri_shortcode_joomla extends JPlugin {
         protected $autoloadLanguage = true;
 
         public function onContentPrepare($context, &$article, &$params, $limitstart) {
             $shortCodeParameters = self::processShortcode($article->text);
-            $linkedEventsController = new LinkedeventsController();
-            $events = $linkedEventsController->getEvents($shortCodeParameters);
-            $html = self::buildHtml($events);
+            $parameters = json_encode($shortCodeParameters);
+            $loaderUrl = JUri::base() . 'plugins/content/epkalenteri_shortcode_joomla/img/loader.gif';
+            $loader = '<img src="'.$loaderUrl.'" alt="Loading..." class="events-loading"/>';
             
-            $article->text = preg_replace('/\[epkalenteri(.*?)\]/', $html, $article->text);
+            $div = "<div class='epkalenteri-events-list-container' data-epkalenteri-params='$parameters'>$loader</div>";
+            $article->text = preg_replace('/\[epkalenteri(.*?)\]/', $div, $article->text);
             return true;
         }
 
@@ -29,19 +31,6 @@
             }
 
             return $shortcodeAttrs;
-        }
-
-        private static function buildHtml ($events) {
-            require_once(__DIR__.'/templates/event.php');
-            $eventTemplate = new EventTemplate();
-            $html = '<div class="epkalenteri-events-list">';
-
-            foreach ($events['data'] as $event) {
-                $html = $html . $eventTemplate->getEventHtml($event);
-            }
-
-            $html = $html . '</div>';
-            return $html;
         }
     }
 ?>
